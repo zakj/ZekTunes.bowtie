@@ -1,0 +1,55 @@
+* { font-size: 16px; font-weight: normal; margin: 0; padding: 0; }
+
+body {
+    color: #fff;
+    font-family: 'Avenir LT Std';
+}
+
+figure {
+    width: 72px; height: 72px;
+    position: absolute; left: 0; top: 0;
+}
+hgroup, #rating {
+    margin-left: 3px;
+    min-width: 150px;  /* give the progress bar a reasonable size */
+    max-width: 325px;  /* 400 - 72 artwork - 3 padding */
+    position: absolute; left: 72px;
+}
+hgroup { bottom: 2px; }
+#rating { top: 3px; }
+
+#artwork {
+    border-radius: 3px;
+    border: 1px solid #333;
+    margin: 5px;
+    position: absolute;
+    -webkit-box-shadow: 0 0 5px #111;
+    width: 60px; height: 60px;
+}
+
+#title, #artist, #album {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: #111 0px 1px 1px;
+    white-space: nowrap;
+}
+#title, #artist { opacity: .8; }
+#artist, #album { font-size: 12px; }
+#title { font-size: 15px; }
+#artist { float: left; }
+#album { opacity: .5; padding-left: 1ex; }
+
+#rating { opacity: .1; }
+#rating .off { opacity: .4; }
+
+#progress {
+    background-color: rgba(255, 255, 255, .1);
+    margin-top: 1px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+#progress mark {
+    background-color: rgba(255, 255, 255, .2);
+    display: block;
+    height: 1px;
+}

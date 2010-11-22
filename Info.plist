@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BTThemeName</key>
+	<string>ZekTunes</string>
+	<key>BTThemeArtist</key>
+	<string>Church of Zek</string>
+	<key>BTArtistURL</key>
+	<string>http://www.churchofzek.com/</string>
+	<key>BTThemeIdentifier</key>
+	<string>com.churchofzek.ZekTunes</string>
+	<key>BTThemeVersion</key>
+	<string>1.0</string>
+	<key>BTMainFile</key>
+	<string>index.html</string>
+	<key>BTThemePreviewImage</key>
+	<string>preview.png</string>
+	<key>BTWindowWidth</key>
+	<integer>400</integer>
+	<key>BTWindowHeight</key>
+	<integer>72</integer>
+	<key>BTArtworkWidth</key>
+	<string>60</string>
+	<key>BTArtworkHeight</key>
+	<string>60</string>
+	<key>BTArtworkFunction</key>
+	<string>bowtieArtworkChange</string>
+	<key>BTPlayStateFunction</key>
+	<string>bowtiePlayStateChange</string>
+	<key>BTStatusFunction</key>
+	<string>bowtiePolling</string>
+	<key>BTReadyFunction</key>
+	<string>bowtieThemeReady</string>
+	<key>BTTrackFunction</key>
+	<string>bowtieTrackChange</string>
+</dict>
+</plist>
