@@ -40,7 +40,7 @@ hgroup { bottom: 2px; }
 #album { opacity: .5; padding-left: 1ex; }
 
 #rating { opacity: .1; }
-#rating .off { opacity: .4; }
+#rating .off { color: #999; }
 
 #progress {
     background-color: rgba(255, 255, 255, .1);
