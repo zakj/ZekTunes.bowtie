@@ -1,7 +1,14 @@
+var PLAY_STATES = {
+    stopped: 0,
+    playing: 1,
+    paused: 2
+};
+
 var cached = {
     clickCount: 0,
     clickTimer: null,
     defaultArtwork: null,
+    mouseDownAt: null,
     rating: null
 };
 
@@ -25,16 +32,29 @@ function bowtieThemeReady() {
     // Grab the default artwork image from the HTML.
     cached.defaultArtwork = $('#artwork').attr('src');
 
+    $('#artwork').bind('mousedown', function (e) {
+        cached.mouseDownAt = new Date();
+    });
+
     // Album cover single-click to play/pause, double-click to advance to the
     // next track, triple-click to return to the previous track.
     $('#artwork').bind('click', function (e) {
+        // Attempt to ignore drags.
+        var clickDuration = new Date() - cached.mouseDownAt;
+        if (clickDuration > 500) return;
+
         ++cached.clickCount;
         clearTimeout(cached.clickTimer);
         cached.clickTimer = setTimeout(function () {
-            switch (cached.clickCount) {
-                case 1: iTunes.playPause(); break;
-                case 2: iTunes.nextTrack(); break;
-                case 3: iTunes.previousTrack(); break;
+            if (iTunes.playState() !== PLAY_STATES.playing) {
+                iTunes.playPause();
+            }
+            else {
+                switch (cached.clickCount) {
+                    case 1: iTunes.playPause(); break;
+                    case 2: iTunes.nextTrack(); break;
+                    case 3: iTunes.previousTrack(); break;
+                }
             }
             cached.clickCount = 0;
         }, 200);
@@ -61,7 +81,7 @@ function bowtieArtworkChange(url) {
 function bowtiePlayStateChange(state) {
     // Dim the player on pause/stop.
     var fadeDuration = 150;
-    if (state === 1) {
+    if (state === PLAY_STATES.playing) {
         $('#artwork').fadeTo(fadeDuration, 1);
         $('hgroup, #rating').fadeIn(fadeDuration);
     }
