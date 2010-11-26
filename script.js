@@ -74,20 +74,21 @@ function bowtieThemeReady() {
 
 function bowtieArtworkChange(url) {
     url = url || cached.defaultArtwork;
-    $('#artwork').attr('src', url);
+    $('figure').addClass('swapping');
+    $('#artwork-cache').attr('src', url)
+        .bind('webkitTransitionEnd', function () {
+            $('#artwork').attr('src', url);
+            $('figure').removeClass('swapping');
+        });
 }
 
 
 function bowtiePlayStateChange(state) {
-    // Dim the player on pause/stop.
-    var fadeDuration = 150;
     if (state === PLAY_STATES.playing) {
-        $('#artwork').fadeTo(fadeDuration, 1);
-        $('hgroup, #rating').fadeIn(fadeDuration);
+        $('body').removeClass('paused');
     }
     else {
-        $('#artwork').fadeTo(fadeDuration, .2);
-        $('hgroup, #rating').fadeOut(fadeDuration);
+        $('body').addClass('paused');
     }
 }
 

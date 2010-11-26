@@ -18,13 +18,25 @@ hgroup, #rating {
 hgroup { bottom: 2px; }
 #rating { top: 3px; }
 
-#artwork {
+#artwork, #artwork-cache {
     border-radius: 3px;
     border: 1px solid #333;
+    -webkit-box-shadow: 0 0 5px #111;
+    box-shadow: 0 0 5px #111;
     margin: 5px;
     position: absolute;
-    -webkit-box-shadow: 0 0 5px #111;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
     width: 60px; height: 60px;
+}
+#artwork-cache {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+}
+.swapping #artwork-cache {
+    opacity: 1;
+    visibility: visible;
 }
 
 #title, #artist, #album {
@@ -52,4 +64,17 @@ hgroup { bottom: 2px; }
     background-color: rgba(255, 255, 255, .2);
     display: block;
     height: 1px;
+    -webkit-transition: width .3s ease;
+    transition: width .3s ease;
+}
+
+figure, hgroup, #rating {
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+}
+.paused figure {
+    opacity: .2;
+}
+.paused hgroup, .paused #rating {
+    opacity: 0;
 }
