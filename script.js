@@ -28,10 +28,25 @@ function updateRating(rating) {
 }
 
 
+// Bowlets elements don't get :hover pseudoclasses applied.
+function trackingHover(prop) {
+    if (prop.enter) {
+        $(prop.element).addClass('hover');
+    }
+    else {
+        $(prop.element).removeClass('hover');
+    }
+}
+
+
 function bowtieThemeReady() {
     // Grab the default artwork image from the HTML.
     cached.defaultArtwork = $('#artwork').attr('src');
 
+    // Allow hover handling for the rating.
+    Bowtie.addMouseTrackingForElement($('#rating').get(0), 'trackingHover');
+
+    // Cache the mouse down timestamp to ignore drag events later.
     $('#artwork').bind('mousedown', function (e) {
         cached.mouseDownAt = new Date();
     });

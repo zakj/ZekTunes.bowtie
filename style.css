@@ -51,8 +51,18 @@ hgroup { bottom: 2px; }
 #artist { float: left; }
 #album { opacity: .5; padding-left: 1ex; }
 
-#rating { opacity: .1; }
-#rating .off { color: #999; }
+#rating {
+    min-width: 0;
+    display: inline;
+}
+#rating a {
+    opacity: .1;
+    -webkit-transition: opacity .1s ease;
+    transition: opacity .1s ease;
+}
+#rating a.off { opacity: 0; }
+#rating.hover a { opacity: .8; }
+#rating.hover a.off { opacity: .2; }
 
 #progress {
     background-color: rgba(255, 255, 255, .1);
