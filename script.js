@@ -18,7 +18,7 @@ function updateRating(rating) {
     if (cached.rating && rating === cached.rating) return;
     cached.rating = rating;
     $('#rating').children().each(function () {
-        if (rating >= parseInt(this.id, 10)) {
+        if (rating >= $(this).data('rating')) {
             $(this).removeClass(offClassName);
         }
         else {
@@ -63,7 +63,7 @@ function bowtieThemeReady() {
     // Update the rating on click.
     $('#rating').bind('click', function (e) {
         if (e.target.tagName.toLowerCase() === 'a') {
-            var newRating = parseInt(e.target.id, 10);
+            var newRating = $(e.target).data('rating');
             iTunes.setRating(newRating);
             updateRating(newRating);
         }
