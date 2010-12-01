@@ -7,7 +7,7 @@ var PLAY_STATES = {
 var cached = {
     clickCount: 0,
     clickTimer: null,
-    defaultArtwork: null,
+    defaultArtwork: 'no-artwork.png',
     mouseDownAt: null,
     rating: null
 };
@@ -40,9 +40,6 @@ function trackingHover(prop) {
 
 
 function bowtieThemeReady() {
-    // Grab the default artwork image from the HTML.
-    cached.defaultArtwork = $('#artwork').attr('src');
-
     // Allow hover handling for the rating.
     Bowtie.addMouseTrackingForElement($('#rating').get(0), 'trackingHover');
 
@@ -89,10 +86,11 @@ function bowtieThemeReady() {
 
 function bowtieArtworkChange(url) {
     url = url || cached.defaultArtwork;
+    url = 'url(' + url + ')';
     $('figure').addClass('swapping');
-    $('#artwork-cache').attr('src', url)
+    $('#artwork-next').css('background-image', url)
         .bind('webkitTransitionEnd', function () {
-            $('#artwork').attr('src', url);
+            $('#artwork').css('background-image', url);
             $('figure').removeClass('swapping');
         });
 }
