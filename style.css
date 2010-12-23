@@ -19,7 +19,7 @@ hgroup, #rating {
     max-width: 325px;  /* 400 - 72 artwork - 3 padding */
     position: absolute; left: 72px;
 }
-hgroup { bottom: 2px; }
+hgroup { bottom: 3px; }
 #rating { top: 3px; }
 
 #artwork, #artwork-next {
