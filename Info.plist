@@ -34,5 +34,7 @@
 	<string>bowtieThemeReady</string>
 	<key>BTTrackFunction</key>
 	<string>bowtieTrackChange</string>
+	<key>BTWindowMode</key>
+	<string>desktop</string>
 </dict>
 </plist>
